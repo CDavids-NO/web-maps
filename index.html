@@ -54,7 +54,7 @@
         <script src="data/LagosLuz_14.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:false, maxZoom:25, minZoom:5
+            zoomControl:false, maxZoom:20, minZoom:3
         })
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -135,8 +135,8 @@
             pane: 'pane_OSMStandard_0',
             opacity: 1.0,
             attribution: '<a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-            minZoom: 1,
-            maxZoom: 10,
+            minZoom: 3,
+            maxZoom: 20,
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
@@ -152,10 +152,12 @@
                         <td>' + (feature.properties['site name'] !== null ? autolinker.link(String(feature.properties['site name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['file path'] !== null ? '<img src="images/' + String(feature.properties['file path']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
+                        <th scope="row">file path</th>\
+                        <td>' + (feature.properties['file path'] !== null ? '<img src="images/' + String(feature.properties['file path']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['descriptio'] !== null ? autolinker.link(String(feature.properties['descriptio']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">descriptio</th>\
+                        <td>' + (feature.properties['descriptio'] !== null ? autolinker.link(String(feature.properties['descriptio']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -546,7 +548,7 @@
                         <td colspan="2">' + (feature.properties['source'] !== null ? autolinker.link(String(feature.properties['source']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['url'] !== null ? autolinker.link(String(feature.properties['url']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="url" colspan="2"><strong>url</strong><br />' + (feature.properties['url'] !== null ? autolinker.link(String(feature.properties['url']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['url name'] !== null ? autolinker.link(String(feature.properties['url name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -976,8 +978,7 @@
         function pop_LagosLuz_14(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">name</th>\
-                        <td>' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(String(feature.properties['name']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['symbol'] !== null ? autolinker.link(String(feature.properties['symbol']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
